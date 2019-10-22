@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4><label for="search-box">Hero Search</label></h4>
+
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <!-- heroes$ >>>>> $ is a convention that indicates that heroes$ is an Observable, not an array -->
+    <!-- *ngFor can't work with Observables so the async pipe subscribes to the Observable automatically without having to do so in the class -->
+    <li *ngFor="let hero of heroes$ | async">
+      <a routerLink="/detail/{{ hero.id }}">{{ hero.name }}</a>
+    </li>
+  </ul>
+</div>
