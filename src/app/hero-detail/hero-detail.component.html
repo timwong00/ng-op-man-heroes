@@ -1,5 +1,7 @@
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
 <div *ngIf="hero">
   <h2>{{ hero.name | uppercase }} Details</h2>
+
   <div><span>id: </span>{{ hero.id }}</div>
   <div>
     <label
@@ -9,5 +11,16 @@
   </div>
 </div>
 
-<button (click)="goBack()">go back</button>
-<button (click)="save()">save</button>
+<button
+  pButton
+  type="button"
+  label="go back"
+  (click)="goBack()"
+  class="ui-button-raised ui-button-secondary"
+></button>
+<button
+  pButton
+  (click)="save(); showSuccess()"
+  label="save"
+  class="ui-button-raised ui-button-secondary"
+></button>

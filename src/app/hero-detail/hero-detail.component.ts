@@ -5,17 +5,21 @@ import { Location } from "@angular/common";
 import { Hero } from "../models/hero";
 import { HeroService } from "../hero.service";
 
+import { MessageService } from "primeng/api";
+
 @Component({
   selector: "hero-detail",
   templateUrl: "./hero-detail.component.html",
-  styleUrls: ["./hero-detail.component.css"]
+  styleUrls: ["./hero-detail.component.css"],
+  providers: [MessageService]
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +37,14 @@ export class HeroDetailComponent implements OnInit {
 
   save(): void {
     this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+  }
+
+  showSuccess() {
+    console.log(this.messageService);
+    this.messageService.add({
+      severity: "success",
+      summary: "Success!",
+      detail: "Saved Hero"
+    });
   }
 }
