@@ -23,7 +23,13 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 11011, name: "OP MAN" },
       { id: 99999, name: "?????" }
     ];
-    return { heroes, secretHeroes };
+    const crises = [
+      { id: 1, name: "Dragon Burning Cities" },
+      { id: 2, name: "Sky Rains Great White Sharks" },
+      { id: 3, name: "Giant Asteroid Heading For Earth" },
+      { id: 4, name: "Procrastinators Meeting Delayed Again" }
+    ];
+    return { heroes, secretHeroes, crises };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

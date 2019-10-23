@@ -19,7 +19,9 @@ import { MessagesComponent } from "./messages/messages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeroSearchComponent } from "./hero-search/hero-search.component";
 import { SecretHeroesComponent } from "./secret-heroes/secret-heroes.component";
-import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { CrisisCenterModule } from "./crisis-center/crisis-center.module";
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,14 @@ import { Message } from "@angular/compiler/src/i18n/i18n_ast";
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    SecretHeroesComponent
+    SecretHeroesComponent,
+    PageNotFoundComponent,
+    ComposeMessageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CrisisCenterModule,
     FormsModule,
     AppRoutingModule,
     ButtonModule,
