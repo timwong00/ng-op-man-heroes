@@ -8,6 +8,7 @@ import { InMemoryDataService } from "./in-memory-data.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ButtonModule } from "primeng/button";
 import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -17,6 +18,8 @@ import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeroSearchComponent } from "./hero-search/hero-search.component";
+import { SecretHeroesComponent } from "./secret-heroes/secret-heroes.component";
+import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { HeroSearchComponent } from "./hero-search/hero-search.component";
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    SecretHeroesComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { HeroSearchComponent } from "./hero-search/hero-search.component";
       dataEncapsulation: false
     })
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

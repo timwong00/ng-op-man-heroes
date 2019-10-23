@@ -40,11 +40,10 @@ export class HeroDetailComponent implements OnInit {
   }
 
   showSuccess() {
-    console.log(this.messageService);
     this.messageService.add({
       severity: "success",
       summary: "Success!",
-      detail: "Saved Hero"
+      detail: "Hero details has been saved"
     });
   }
 }
