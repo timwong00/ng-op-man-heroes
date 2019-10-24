@@ -10,15 +10,17 @@ import { Crisis } from "../crisis";
 })
 export class CrisisListComponent implements OnInit {
   crises: Crisis[];
-  selectedId: number;
 
   constructor(private crisisService: CrisisService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCrises();
   }
 
-  getCrises() {
+  // CRISIS list wont change after input changed + saved
+  // CRISIS details router outlet wont change details when clicked on other crises
+
+  getCrises(): void {
     this.crisisService.getCrises().subscribe(crises => {
       this.crises = crises;
     });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 import { Location } from "@angular/common";
 
 import { Crisis } from "../crisis";
@@ -18,30 +18,37 @@ export class CrisisDetailComponent implements OnInit {
   constructor(
     private crisisService: CrisisService,
     private route: ActivatedRoute,
-    private location: Location,
+    private router: Router,
     private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
-    this.getCrisis();
+    // snapshot only changes the path param in url and constructor was not called
+    // by subscribing it will listen to the changes taking place in params
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = +params.get("id");
+      this.getCrisis(id);
+    });
   }
 
-  getCrisis(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+  getCrisis(id: number): void {
+    // const id = +this.route.snapshot.paramMap.get("id");
     this.crisisService
       .getCrisis(id)
       .subscribe(crisis => (this.crisis = crisis));
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(["../"], {
+      relativeTo: this.route
+    });
   }
 
   save(): void {
     this.crisisService.updateCrisis(this.crisis).subscribe(() => this.goBack());
   }
 
-  showSuccess() {
+  showSuccess(): void {
     this.messageService.add({
       severity: "success",
       summary: "Success!",

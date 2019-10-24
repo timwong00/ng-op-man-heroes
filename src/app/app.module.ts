@@ -11,6 +11,7 @@ import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
 
 import { AppRoutingModule } from "./app-routing.module";
+import { CrisisCenterModule } from "./crisis-center/crisis-center.module";
 
 import { AppComponent } from "./app.component";
 import { HeroesComponent } from "./heroes/heroes.component";
@@ -20,8 +21,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeroSearchComponent } from "./hero-search/hero-search.component";
 import { SecretHeroesComponent } from "./secret-heroes/secret-heroes.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { CrisisCenterModule } from "./crisis-center/crisis-center.module";
-import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { ComposeMessageComponent } from "./compose-message/compose-message.component";
 
 @NgModule({
   declarations: [

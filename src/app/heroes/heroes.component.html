@@ -57,14 +57,3 @@
     add
   </button>
 </div>
-
-<ul class="crises">
-  <li *ngFor="let crisis of crises">
-    <a>
-      <span class="badge">{{ crisis.id }}</span> {{ crisis.name }}
-    </a>
-    <button class="delete" title="delete" (click)="showConfirm(crisis.name)">
-      x
-    </button>
-  </li>
-</ul>

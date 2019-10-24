@@ -21,7 +21,6 @@ export class CrisisService {
   ) {}
 
   getCrises(): Observable<Crisis[]> {
-    console.log(this.http.get<Crisis[]>(this.crisisUrl));
     return this.http.get<Crisis[]>(this.crisisUrl).pipe(
       tap(_ => this.log("fetched crises")),
       catchError(this.handleError<Crisis[]>("getCrises", []))
@@ -37,6 +36,8 @@ export class CrisisService {
   }
 
   updateCrisis(crisis: Crisis): Observable<any> {
+    console.log(crisis);
+
     return this.http.put(this.crisisUrl, crisis, this.httpOptions).pipe(
       tap(_ => this.log(`updated crisis id=${crisis.id}`)),
       catchError(this.handleError<any>("updateCrisis"))
