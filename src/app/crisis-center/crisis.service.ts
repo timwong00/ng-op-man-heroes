@@ -44,6 +44,17 @@ export class CrisisService {
     );
   }
 
+  // addCrisis(crisis: Crisis): Observable<Crisis> {
+  //   return this.http
+  //     .post<Crisis>(this.crisisUrl, crisis, this.httpOptions)
+  //     .pipe(
+  //       tap((newCrisis: Crisis) =>
+  //         this.log(`added crisis w/ id=${newCrisis.id}`)
+  //       ),
+  //       catchError(this.handleError<Crisis>("addCrisis"))
+  //     );
+  // }
+
   private log(message: string) {
     this.messageService.add(`CrisisService: ${message}`);
   }

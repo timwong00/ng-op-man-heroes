@@ -1,7 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 import { CrisisService } from "../crisis.service";
 import { Crisis } from "../crisis";
+import { Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-crisis-list",
@@ -9,20 +12,26 @@ import { Crisis } from "../crisis";
   styleUrls: ["./crisis-list.component.css"]
 })
 export class CrisisListComponent implements OnInit {
+  crises$: Observable<Crisis[]>;
   crises: Crisis[];
+  selectedId: number;
 
-  constructor(private crisisService: CrisisService) {}
+  constructor(
+    private crisisService: CrisisService,
+    private route: ActivatedRoute,
+    private ref: ChangeDetectorRef
+  ) {}
 
-  ngOnInit(): void {
-    this.getCrises();
+  ngOnInit() {
+    this.ref.detectChanges();
+    this.crises$ = this.crisisService.getCrises();
+
+    // this.getCrises();
   }
 
-  // CRISIS list wont change after input changed + saved
-  // CRISIS details router outlet wont change details when clicked on other crises
-
-  getCrises(): void {
-    this.crisisService.getCrises().subscribe(crises => {
-      this.crises = crises;
-    });
-  }
+  // getCrises(): void {
+  //   // this.crisisService.getCrises().subscribe(crises => {
+  //   //   this.crises = crises;
+  //   // });
+  // }
 }

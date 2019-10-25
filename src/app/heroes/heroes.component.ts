@@ -40,9 +40,10 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(hero: Hero): void {
-    this.pngMessageService.clear("c");
+    // this.showConfirm(hero.name);
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
+    // this.pngMessageService.clear("c");
   }
 
   showSuccess(name: string) {
@@ -53,18 +54,22 @@ export class HeroesComponent implements OnInit {
     });
   }
 
-  showConfirm(name: string) {
-    this.pngMessageService.clear();
-    this.pngMessageService.add({
-      key: "c",
-      sticky: true,
-      severity: "warn",
-      summary: "Are you sure?",
-      detail: `Confirm to delete hero ${name}`
-    });
-  }
+  // showConfirm(name: string) {
+  //   this.pngMessageService.clear();
+  //   this.pngMessageService.add({
+  //     key: "c",
+  //     sticky: true,
+  //     severity: "warn",
+  //     summary: "Are you sure?",
+  //     detail: `Confirm to delete hero ${name}`
+  //   });
+  // }
 
-  onReject() {
-    this.pngMessageService.clear("c");
-  }
+  // onReject() {
+  //   this.pngMessageService.clear("c");
+  // }
+
+  // onConfirm(hero: Hero) {
+  //   this.pngMessageService.clear("c");
+  // }
 }

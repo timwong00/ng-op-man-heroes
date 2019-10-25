@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
-import { Location } from "@angular/common";
 
 import { Crisis } from "../crisis";
 import { CrisisService } from "../crisis.service";
