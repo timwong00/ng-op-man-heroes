@@ -12,6 +12,7 @@ import { MessageService } from "primeng/api";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { CrisisCenterModule } from "./crisis-center/crisis-center.module";
+import { AdminModule } from "./admin/admin.module";
 import { AuthModule } from "./auth/auth.module";
 
 import { AppComponent } from "./app.component";
@@ -20,10 +21,8 @@ import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeroSearchComponent } from "./hero-search/hero-search.component";
-import { SecretHeroesComponent } from "./secret-heroes/secret-heroes.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { ComposeMessageComponent } from "./compose-message/compose-message.component";
-import { LoginComponent } from "./auth/login/login.component";
 
 @NgModule({
   declarations: [
@@ -33,12 +32,11 @@ import { LoginComponent } from "./auth/login/login.component";
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    SecretHeroesComponent,
     PageNotFoundComponent,
-    ComposeMessageComponent,
-    LoginComponent
+    ComposeMessageComponent
   ],
   imports: [
+    AdminModule,
     AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
