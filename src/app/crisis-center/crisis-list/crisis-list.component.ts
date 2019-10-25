@@ -23,15 +23,17 @@ export class CrisisListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ref.detectChanges();
-    this.crises$ = this.crisisService.getCrises();
+    // this.crises$ = this.crisisService.getCrises();
+    this.crisisService.refreshNeeded$.subscribe(() => {
+      this.getCrises();
+    });
 
-    // this.getCrises();
+    this.getCrises();
   }
 
-  // getCrises(): void {
-  //   // this.crisisService.getCrises().subscribe(crises => {
-  //   //   this.crises = crises;
-  //   // });
-  // }
+  getCrises(): void {
+    this.crisisService.getCrises().subscribe(crises => {
+      this.crises = crises;
+    });
+  }
 }
